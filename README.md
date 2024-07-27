@@ -13,4 +13,5 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 - [Laravel Livewire](https://laravel-livewire.com)
 - Laravel Breeze
+
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
