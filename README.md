@@ -16,5 +16,6 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Laravel Filament](https://filamentphp.com)
 - [Laravel Media Library](https://spatie.be/docs/laravel-medialibrary/v11/introduction)
 - [Laravel Cache](https://laravel.com/docs/11.x/cache)
+- [Laravel Queue Worker](https://laravel.com/docs/11.x/queues)
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
