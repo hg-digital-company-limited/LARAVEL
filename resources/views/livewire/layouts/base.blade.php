@@ -14,7 +14,10 @@
 </head>
 
 <body>
-
+    <nav>
+        <a href="/students" wire:navigate>students</a>
+        <a href="/teachers" wire:navigate>teachers</a>
+    </nav>
     {{ $slot }}
 
 
