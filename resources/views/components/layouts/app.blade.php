@@ -5,6 +5,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>{{ $title ?? 'Page Title' }}</title>
+        <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+        <script>
+
+          // Enable pusher logging - don't include this in production
+          Pusher.logToConsole = true;
+
+          var pusher = new Pusher('ef34e040856c80f99af3', {
+            cluster: 'ap1',
+            encrypted: true
+          });
+
+          var channel = pusher.subscribe('my-channel');
+          channel.bind('my-event', function(data) {
+            alert(JSON.stringify(data));
+          });
+        </script>
         @livewireStyles
     </head>
     <body>

@@ -15,3 +15,6 @@ Route::middleware('auth')->group(function () {
 
 // Trang đăng nhập, chặn truy cập nếu đã đăng nhập
 Route::get('/login', Login::class)->name('login')->middleware('guest');
+Route::get('/pusher', function() {
+    event(new App\Events\CN1_MyEvent('Hello World'));
+});

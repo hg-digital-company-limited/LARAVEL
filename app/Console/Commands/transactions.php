@@ -2,24 +2,18 @@
 
 namespace App\Console\Commands;
 
+use App\Events\CN1_MyEvent;
 use Illuminate\Console\Command;
 use App\Models\User; // Import mô hình User
 
 class Transactions extends Command
 {
+
     protected $signature = 'app:transactions';
     protected $description = 'Command to log hello world every 5 seconds and update user balance';
 
     public function handle()
     {
-        $userId = 2; // Thay đổi ID người dùng nếu cần
-        $user = User::find($userId); // Lấy người dùng
-
-        if (!$user) {
-            $this->error('User not found!');
-            return;
-        }
-
         while (true) {
             $this->info('Hello world!');
             $this->fetchTransactionsFromApi();
@@ -82,6 +76,7 @@ class Transactions extends Command
                             'sub_account' => $transaction['sub_account'] ?? null, // Thay đổi key nếu cần
                             'bank_account_id' => $transaction['bank_account_id'], // Thay đổi key nếu cần
                         ]);
+                        event(new CN1_MyEvent('Hello World'));
                     } else {
                         // Giao dịch đã tồn tại, có thể ghi log hoặc xử lý theo cách khác
                         // dd('Transaction already exists: ' . $transaction['id']);

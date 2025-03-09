@@ -180,6 +180,7 @@ CREATE TABLE `transactions` (
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card ribbon-box">
@@ -386,6 +387,135 @@ class Transactions extends Command
 }
 
 </pre>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card ribbon-box">
+                                        <div class="card-body">
+                                            <div class="mb-5">
+                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG TÀI
+                                                    LIỆU
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-3">
+                                                    <label for="codeMirrorDemo" class="form-label">Cấu hình Pusher</label>
+                                                    <div>
+                                                        <pre  class="form-control">
+BROADCAST_CONNECTION=pusher
+BROADCAST_DRIVER=pusher
+PUSHER_APP_ID=1954604
+PUSHER_APP_KEY=ef34e040856c80f99af3
+PUSHER_APP_SECRET=65c43fa0d14ea04fec0a
+PUSHER_APP_CLUSTER=ap1
+</pre>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card ribbon-box">
+                                        <div class="card-body">
+                                            <div class="mb-5">
+                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG TÀI
+                                                    LIỆU
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-3">
+                                                    <label for="codeMirrorDemo" class="form-label">Cấu hình Pusher</label>
+                                                    <div>
+                                                        <pre class="form-control">
+   &lt;script src="https://js.pusher.com/8.2.0/pusher.min.js"&gt;&lt;/script&gt;
+   &lt;script&gt;
+     // Enable Pusher logging - don't include this in production
+     Pusher.logToConsole = true;
+     var pusher = new Pusher('ef34e040856c80f99af3', {
+       cluster: 'ap1',
+       encrypted: true
+     });
+     var channel = pusher.subscribe('my-channel');
+     channel.bind('my-event', function(data) {
+       alert(JSON.stringify(data));
+     });
+   &lt;/script&gt;
+                                                            </pre>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card ribbon-box">
+                                        <div class="card-body">
+                                            <div class="mb-5">
+                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG TÀI
+                                                    LIỆU
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-3">
+                                                    <label for="codeMirrorDemo" class="form-label">Cấu hình Event</label>
+                                                    <div>
+                                                        <pre class="form-control">
+&lt;?php
+namespace App\Events;
+
+use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class CN1_MyEvent implements ShouldBroadcastNow
+{
+  use Dispatchable, InteractsWithSockets, SerializesModels;
+
+  public $message;
+
+  public function __construct($message)
+  {
+    $this->message = ['message' => '123123123'];
+  }
+
+  public function broadcastOn()
+  {
+      return ['my-channel'];
+  }
+
+  public function broadcastAs()
+  {
+      return 'my-event';
+  }
+  public function broadcastWith(): array
+  {
+      return  $this->message;
+  }
+}
+
+                                                            </pre>
 
                                                     </div>
                                                 </div>
