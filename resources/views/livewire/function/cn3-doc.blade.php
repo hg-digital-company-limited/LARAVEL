@@ -143,15 +143,50 @@
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">Biến môi trường
+                                                <div class="ribbon ribbon-primary ribbon-shape ">CN3 Livewire
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-                                                        <pre class="form-control">
-    GEETEST_ID=e69dae1839c6c93fdf2843d13a3eae5e
-    GEETEST_KEY=9c7ade79de450700eec6fcee98054c94
+<pre class="form-control">
+    &lt;?php
+
+    namespace App\Livewire\Function;
+
+    use Livewire\Component;
+    use Illuminate\Support\Facades\Cookie;
+
+    class Cn3 extends Component
+    {
+        public $password;
+        public $capcha;
+
+
+        public function mount()
+        {
+            $this->capcha = Cookie::get('capcha') ?? 0;
+            Cookie::queue(Cookie::forget('capcha'));
+        }
+
+        public function create()
+        {
+            $this->capcha = Cookie::get('capcha') ?? 0;
+            if ($this->capcha) {
+                dd('Xác thực thành công', $this->password);
+            } else {
+                dd('Xác thực thất bại', $this->password);
+            }
+        }
+
+
+
+        public function render()
+        {
+            return view('livewire.function.cn3');
+        }
+    }
+
 </pre>
                                                     </div>
                                                 </div>
@@ -166,15 +201,22 @@
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">Biến môi trường
+                                                <div class="ribbon ribbon-primary ribbon-shape ">CN3 View
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-                                                        <pre class="form-control">
-    GEETEST_ID=e69dae1839c6c93fdf2843d13a3eae5e
-    GEETEST_KEY=9c7ade79de450700eec6fcee98054c94
+<pre class="form-control">
+    &lt;div id="form"&gt;
+        &lt;div&gt;&lt;label for="password"&gt;Mật khẩu&lt;/label&gt;
+        &lt;input class="inp" id="password" type="password" wire:model="password"&gt;
+        &lt;/div&gt;
+        &lt;br&gt;
+        @ livewire('function.cn3.capcha')
+        &lt;br&gt;
+        &lt;button wire:click="create" class="btn btn-primary"&gt;Gửi&lt;/button&gt;
+    &lt;/div&gt;
 </pre>
                                                     </div>
                                                 </div>
@@ -184,20 +226,44 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="row">
+                            <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">Biến môi trường
+                                                <div class="ribbon ribbon-primary ribbon-shape ">CAPCHA Component Livewire
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-                                                        <pre class="form-control">
-    GEETEST_ID=e69dae1839c6c93fdf2843d13a3eae5e
-    GEETEST_KEY=9c7ade79de450700eec6fcee98054c94
+<pre class="form-control">
+    &lt;?php
+
+    namespace App\Livewire\Function\Cn3;
+
+    use Illuminate\Support\Facades\Cookie;
+
+    use Livewire\Component;
+
+    class Capcha extends Component
+    {
+        protected $listeners = ['CapchaUpdate'];
+        public $capcha;
+        public function mount()
+        {
+            $this->capcha = Cookie::get('capcha') ?? 0;
+        }
+        public function CapchaUpdate()
+        {
+            Cookie::queue('capcha', true, 5);
+        }
+        public function render()
+        {
+            return view('livewire.function.cn3.capcha');
+        }
+    }
+
 </pre>
                                                     </div>
                                                 </div>
@@ -206,7 +272,30 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card ribbon-box">
+                                        <div class="card-body">
+                                            <div class="mb-5">
+                                                <div class="ribbon ribbon-primary ribbon-shape ">CAPCHA Component View
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-3">
+                                                    <div>
+<pre class="form-control">
+
+
+</pre>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
                             @livewire('inc.footer')

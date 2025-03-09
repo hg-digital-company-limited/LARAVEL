@@ -26,7 +26,6 @@
                 href="/template/public/AdminLTE3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
             <link rel="stylesheet"
                 href="/template/public/AdminLTE3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-            <script src="https://static.geetest.com/v4/gt4.js"></script>
         </head>
         <style>
             html,
@@ -155,40 +154,11 @@
                                                                 id="password" type="password" wire:model="password">
                                                         </div>
                                                         <br>
-                                                        <div><label for="btn">Capcha</label>
-                                                            <div wire:ignore id="captcha">
-                                                            </div>
-                                                        </div>
+                                                        @livewire('function.cn3.capcha')
                                                         <br>
                                                         <button wire:click="create" class="btn btn-primary">Gửi</button>
                                                     </div>
-                                                    <script>
-                                                        var captchaId = "e69dae1839c6c93fdf2843d13a3eae5e"
-                                                        var product = "popup"
-                                                        if (product !== 'bind') {
-                                                            $('#btn').remove();
-                                                        }
 
-                                                        initGeetest4({
-                                                            captchaId: captchaId,
-                                                            product: product,
-                                                        }, function (gt) {
-                                                            window.gt = gt
-                                                            gt
-                                                                .appendTo("#captcha")
-                                                                .onSuccess(function (e) {
-                                                                        Livewire.dispatch('addToCart');
-                                                                });
-
-                                                            $('#btn').click(function () {
-                                                                gt.showBox();
-                                                            })
-                                                            $('#reset_btn').click(function () {
-                                                                gt.reset();
-                                                            })
-                                                        });
-
-                                                    </script>
                                                     <style>
                                                         #captcha a {
                                                             position: initial;
