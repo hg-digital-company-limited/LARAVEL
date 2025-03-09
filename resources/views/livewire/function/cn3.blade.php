@@ -26,6 +26,7 @@
                 href="/template/public/AdminLTE3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
             <link rel="stylesheet"
                 href="/template/public/AdminLTE3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+            <script src="https://static.geetest.com/v4/gt4.js"></script>
         </head>
         <style>
             html,
@@ -129,10 +130,11 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                        <h4 class="mb-sm-0">THANH TOÁN VNPAY</h4>
+                                        <h4 class="mb-sm-0">CAPCHA</h4>
                                         <div class="page-title-right">
                                             <ol class="breadcrumb m-0">
-                                                <li class="breadcrumb-item"><a href="/doc/cn2">TÀI LIỆU</a></li>
+                                                <li class="breadcrumb-item"><a href="{{ route('doc.cn3') }}">TÀI
+                                                        LIỆU</a></li>
                                             </ol>
                                         </div>
                                     </div>
@@ -143,25 +145,71 @@
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">THANH TOÁN VNPAY
+                                                <div class="ribbon ribbon-primary ribbon-shape ">CAPCHA
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <div> <label for="basiInput" class="form-label">VNPAY</label>
-                                                        <button class="btn btn-primary"
-                                                            wire:click="create">THANH TOÁN</button>
-                                                    </div>
+                                                    <form id="form" wire:submit.prevent="create">
+                                                        <div><label for="password">Mật khẩu</label> <input class="inp"
+                                                                id="password" type="password" wire:model="password">
+                                                        </div>
+                                                        <br>
+                                                        <div><label for="btn">Capcha</label>
+                                                            <div wire:ignore id="captcha">
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <button type="submit" class="btn btn-primary">Gửi</button>
+                                                    </form>
+                                                    <script>
+                                                        var captchaId = "e69dae1839c6c93fdf2843d13a3eae5e"
+                                                        var product = "popup"
+                                                        if (product !== 'bind') {
+                                                            $('#btn').remove();
+                                                        }
+
+                                                        initGeetest4({
+                                                            captchaId: captchaId,
+                                                            product: product,
+                                                        }, function (gt) {
+                                                            window.gt = gt
+                                                            gt
+                                                                .appendTo("#captcha")
+                                                                .onSuccess(function (e) {
+                                                                    console.log('Geetest response:', e); // Kiểm tra dữ liệu trả về
+                                                                    if (e && e.uri) {
+                                                                        Livewire.dispatch('addToCart');
+                                                                    } else {
+                                                                        console.error('Unexpected response:', e);
+                                                                    }
+                                                                });
+
+                                                            $('#btn').click(function () {
+                                                                gt.showBox();
+                                                            })
+                                                            $('#reset_btn').click(function () {
+                                                                gt.reset();
+                                                            })
+                                                        });
+
+                                                    </script>
+                                                    <style>
+                                                        #captcha a {
+                                                            position: initial;
+                                                        }
+                                                    </style>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                @livewire('inc.footer')
+                            @livewire('inc.footer')
 
                         </div>
                     </div>
+
                     <script src="/template/public/themesbrand/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
                     <script src="/template/public/themesbrand/libs/simplebar/simplebar.min.js"></script>
                     <script src="/template/public/themesbrand/libs/node-waves/waves.min.js"></script>
@@ -196,7 +244,6 @@
                     <script src="/template/public/AdminLTE3/plugins/codemirror/mode/css/css.js"></script>
                     <script src="/template/public/AdminLTE3/plugins/codemirror/mode/xml/xml.js"></script>
                     <script src="/template/public/AdminLTE3/plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-                    <script src="/template/public/themesbrand/js/app.js"></script>
                     <script
                         type="text/javascript">CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), { mode: "htmlmixed", theme: "monokai" }); CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo1"), { mode: "htmlmixed", theme: "monokai" }); CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo2"), { mode: "htmlmixed", theme: "monokai" }); CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo3"), { mode: "htmlmixed", theme: "monokai" }); CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo4"), { mode: "htmlmixed", theme: "monokai" }); CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo5"), { mode: "htmlmixed", theme: "monokai" }); new ClipboardJS(".copy"); function copy() { cuteToast({ type: "success", message: "Đã sao chép vào bộ nhớ tạm", timer: 5000 }); }</script>
         </body>

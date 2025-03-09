@@ -129,10 +129,10 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                        <h4 class="mb-sm-0">THANH TOÁN VNPAY</h4>
+                                        <h4 class="mb-sm-0">CAPCHA</h4>
                                         <div class="page-title-right">
                                             <ol class="breadcrumb m-0">
-                                                <li class="breadcrumb-item"><a href="/doc/cn2">TÀI LIỆU</a></li>
+                                                <li class="breadcrumb-item"><a href="/doc/cn1">TÀI LIỆU</a></li>
                                             </ol>
                                         </div>
                                     </div>
@@ -143,25 +143,77 @@
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">THANH TOÁN VNPAY
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Biến môi trường
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <div> <label for="basiInput" class="form-label">VNPAY</label>
-                                                        <button class="btn btn-primary"
-                                                            wire:click="create">THANH TOÁN</button>
+                                                    <div>
+                                                        <pre class="form-control">
+    GEETEST_ID=e69dae1839c6c93fdf2843d13a3eae5e
+    GEETEST_KEY=9c7ade79de450700eec6fcee98054c94
+</pre>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                @livewire('inc.footer')
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card ribbon-box">
+                                        <div class="card-body">
+                                            <div class="mb-5">
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Biến môi trường
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-3">
+                                                    <div>
+                                                        <pre class="form-control">
+    GEETEST_ID=e69dae1839c6c93fdf2843d13a3eae5e
+    GEETEST_KEY=9c7ade79de450700eec6fcee98054c94
+</pre>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card ribbon-box">
+                                        <div class="card-body">
+                                            <div class="mb-5">
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Biến môi trường
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-3">
+                                                    <div>
+                                                        <pre class="form-control">
+    GEETEST_ID=e69dae1839c6c93fdf2843d13a3eae5e
+    GEETEST_KEY=9c7ade79de450700eec6fcee98054c94
+</pre>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
+
+
+                            @livewire('inc.footer')
 
                         </div>
                     </div>
+
                     <script src="/template/public/themesbrand/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
                     <script src="/template/public/themesbrand/libs/simplebar/simplebar.min.js"></script>
                     <script src="/template/public/themesbrand/libs/node-waves/waves.min.js"></script>
