@@ -143,14 +143,11 @@
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG TÀI
-                                                    LIỆU
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Lệnh SQL tạo bảng transactions
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Lệnh SQL tạo bảng
-                                                        transactions</label>
                                                     <div>
                                                         <pre  class="form-control">
 CREATE TABLE `transactions` (
@@ -186,15 +183,11 @@ CREATE TABLE `transactions` (
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG TÀI
-                                                    LIỆU
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Hàm thêm transactions
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Hàm thêm
-                                                        transactions</label>
-                                                    <div>
                                                         <pre  class="form-control">
 public function fetchTransactionsFromApi()
 {
@@ -401,13 +394,11 @@ class Transactions extends Command
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG TÀI
-                                                    LIỆU
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Cấu hình Pusher
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Cấu hình Pusher</label>
                                                     <div>
                                                         <pre  class="form-control">
 BROADCAST_CONNECTION=pusher
@@ -431,13 +422,12 @@ PUSHER_APP_CLUSTER=ap1
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG TÀI
-                                                    LIỆU
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Cấu hình Pusher
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Cấu hình Pusher</label>
+
                                                     <div>
                                                         <pre class="form-control">
    &lt;script src="https://js.pusher.com/8.2.0/pusher.min.js"&gt;&lt;/script&gt;
@@ -468,13 +458,11 @@ PUSHER_APP_CLUSTER=ap1
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG TÀI
-                                                    LIỆU
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Cấu hình Event
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Cấu hình Event</label>
                                                     <div>
                                                         <pre class="form-control">
 &lt;?php
@@ -515,6 +503,29 @@ class CN1_MyEvent implements ShouldBroadcastNow
   }
 }
 
+                                                            </pre>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card ribbon-box">
+                                        <div class="card-body">
+                                            <div class="mb-5">
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Lệnh chạy tự động
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-3">
+                                                    <div>
+<pre class="form-control">
+php artisan app:transactions
                                                             </pre>
 
                                                     </div>
