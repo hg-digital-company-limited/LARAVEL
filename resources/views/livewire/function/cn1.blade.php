@@ -154,6 +154,7 @@
                                                                 style="max-width: 200px;" alt="">
                                                         </div>
                                                     </div>
+                                                    <button wire:click="deleteAllTransactions">Xóa tất cả giao dịch</button>
                                                     <div>
                                                         <h1>Danh sách giao dịch</h1>
 
