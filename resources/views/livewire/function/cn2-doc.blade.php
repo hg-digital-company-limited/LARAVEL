@@ -127,103 +127,138 @@
                     <div class="page-content">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="card ribbon-box">
-                                        <div class="card-body">
-                                            <div class="mb-5">
-                                                    <div class="ribbon ribbon-primary ribbon-shape ">VPS
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Lệnh SSH VPS</label>
-                                                    <div>
-                                                        <pre class="form-control">
-61.14.233.135
-D6ORhuMejt
-ssh -p 2018 root@61.14.233.135
-
-61.14.233.25
-6IJRZbC99z
-ssh -p 2018 root@61.14.233.25
-                                                        </pre>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                <div class="col-12">
+                                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                        <h4 class="mb-sm-0">VNPAY</h4>
+                                        <div class="page-title-right">
+                                            <ol class="breadcrumb m-0">
+                                                <li class="breadcrumb-item"><a href="/doc/cn1">TÀI LIỆU</a></li>
+                                            </ol>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                                <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                    <div class="ribbon ribbon-primary ribbon-shape ">DEPLOY LARAVEL
+                                                <div class="ribbon ribbon-primary ribbon-shape ">VNPAY TÀI
+                                                    LIỆU
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Mẫu file deploy.sh</label>
+                                                    <label for="codeMirrorDemo" class="form-label">Tài khoản test</label>
                                                     <div>
 <pre class="form-control">
-    #!/bin/bash
-
-    # Đường dẫn thư mục dự án
-    PROJECT_DIR="/var/www/giangtran.com.vn"
-    GIT_REPO="https://github.com/hg-digital-company-limited/LARAVEL.git"
-    SQL_FILE="${PROJECT_DIR}/laravel.sql"
-    DB_NAME="laravel"
-    DB_USER="laravel"
-    DB_PASSWORD="laravel"  # Thay đổi mật khẩu nếu cần
-
-    # Xóa thư mục dự án
-    sudo rm -rf ${PROJECT_DIR}/*
-    sudo rm -rf ${PROJECT_DIR}/.[^.]*
-
-    # Clone lại repo
-    sudo git clone $GIT_REPO $PROJECT_DIR
-
-    # Xóa và tạo lại database
-    sudo mysql -e "\
-    DROP DATABASE IF EXISTS $DB_NAME;\
-    CREATE DATABASE $DB_NAME;\
-    CREATE USER IF NOT EXISTS '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASSWORD';\
-    GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'localhost';\
-    FLUSH PRIVILEGES;"
-
-    # Nhập dữ liệu từ file SQL
-    if [ -f "$SQL_FILE" ]; then
-        sudo mysql -u $DB_USER -p$DB_PASSWORD $DB_NAME < $SQL_FILE
-    else
-        echo "File SQL không tồn tại: $SQL_FILE"
-        exit 1
-    fi
-
-    # Cài đặt các gói Composer
-    cd $PROJECT_DIR
-    sudo composer install
-
-    # Sao chép tệp .env
-    if [ -f ".env.production" ]; then
-        sudo cp .env.production .env
-    else
-        echo "File .env.production không tồn tại."
-        exit 1
-    fi
-
-    # Phân quyền thư mục
-    sudo chown -R www-data.www-data $PROJECT_DIR/storage
-    sudo chown -R www-data.www-data $PROJECT_DIR/bootstrap/cache
-    # Tạo symbolic link cho storage
-    sudo php artisan storage:link
-
-    echo "Triển khai hoàn tất."
-
+    #	Thông tin thẻ	Ghi chú
+    1
+    Ngân hàng: NCB
+    Số thẻ: 9704198526191432198
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày phát hành:07/15
+    Mật khẩu OTP:123456
+    Thành công
+    2
+    Ngân hàng: NCB
+    Số thẻ: 9704195798459170488
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày phát hành:07/15
+    Thẻ không đủ số dư
+    3
+    Ngân hàng: NCB
+    Số thẻ: 9704192181368742
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày phát hành:07/15
+    Thẻ chưa kích hoạt
+    4
+    Ngân hàng: NCB
+    Số thẻ: 9704193370791314
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày phát hành:07/15
+    Thẻ bị khóa
+    5
+    Ngân hàng: NCB
+    Số thẻ: 9704194841945513
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày phát hành:07/15
+    Thẻ bị hết hạn
+    6
+    Loại thẻ quốc tếVISA (No 3DS)
+    Số thẻ: 4456530000001005
+    CVC/CVV: 123
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày hết hạn:12/26
+    Email:test@gmail.com
+    Địa chỉ:22 Lang Ha
+    Thành phố:Ha Noi
+    Thành công
+    7
+    Loại thẻ quốc tếVISA (3DS)
+    Số thẻ: 4456530000001096
+    CVC/CVV: 123
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày hết hạn:12/26
+    Email:test@gmail.com
+    Địa chỉ:22 Lang Ha
+    Thành phố:Ha Noi
+    Thành công
+    8
+    Loại thẻ quốc tếMasterCard (No 3DS)
+    Số thẻ: 5200000000001005
+    CVC/CVV: 123
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày hết hạn:12/26
+    Email:test@gmail.com
+    Địa chỉ:22 Lang Ha
+    Thành phố:Ha Noi
+    Thành công
+    9
+    Loại thẻ quốc tếMasterCard (3DS)
+    Số thẻ: 5200000000001096
+    CVC/CVV: 123
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày hết hạn:12/26
+    Email:test@gmail.com
+    Địa chỉ:22 Lang Ha
+    Thành phố:Ha Noi
+    Thành công
+    10
+    Loại thẻ quốc tếJCB (No 3DS)
+    Số thẻ: 3337000000000008
+    CVC/CVV: 123
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày hết hạn:12/26
+    Email:test@gmail.com
+    Địa chỉ:22 Lang Ha
+    Thành phố:Ha Noi
+    Thành công
+    11
+    Loại thẻ quốc tếJCB (3DS)
+    Số thẻ: 3337000000200004
+    CVC/CVV: 123
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày hết hạn:12/24
+    Email:test@gmail.com
+    Địa chỉ:22 Lang Ha
+    Thành phố:Ha Noi
+    Thành công
+    12
+    Loại thẻ ATM nội địaNhóm Bank qua NAPAS
+    Số thẻ: 9704000000000018
+    Số thẻ: 9704020000000016
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày phát hành:03/07
+    OTP:otp
+    Thành công
+    12
+    Loại thẻ ATM nội địaEXIMBANK
+    Số thẻ: 9704310005819191
+    Tên chủ thẻ:NGUYEN VAN A
+    Ngày hết hạn:10/26
+    Thành công
 </pre>
-
                                                     </div>
                                                 </div>
 
@@ -232,55 +267,74 @@ ssh -p 2018 root@61.14.233.25
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                    <div class="ribbon ribbon-primary ribbon-shape ">DEPLOY LARAVEL
+                                                <div class="ribbon ribbon-primary ribbon-shape ">VNPAY TÀI
+                                                    LIỆU
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Mẫu file cấu hình nginx</label>
+                                                    <label for="codeMirrorDemo" class="form-label">Lệnh tạo thanh toán
+                                                        VNPAY</label>
                                                     <div>
 <pre class="form-control">
-    server {
-        listen 80;
-        server_name server_domain_or_IP;
-        root /var/www/travellist/public;
+    public function create()
+    {
+        $vnp_TmnCode = "AHWX5MX0"; //Mã website tại VNPAY
+        $vnp_HashSecret = "LMPIBTDLXYGA1K0RTK06SAEPKGW0V1LX"; //Chuỗi bí mật
+        $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+        $vnp_Returnurl = env('APP_URL') . "/cn2";
+        $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
+        $vnp_OrderType = 'billpayment';
+        $vnp_Amount = 10000 * 100;
+        $vnp_Locale = 'vn';
+        $vnp_IpAddr = request()->ip();
 
-        add_header X-Frame-Options "SAMEORIGIN";
-        add_header X-XSS-Protection "1; mode=block";
-        add_header X-Content-Type-Options "nosniff";
+        $inputData = array(
+            "vnp_Version" => "2.0.0",
+            "vnp_TmnCode" => $vnp_TmnCode,
+            "vnp_Amount" => $vnp_Amount,
+            "vnp_Command" => "pay",
+            "vnp_CreateDate" => date('YmdHis'),
+            "vnp_CurrCode" => "VND",
+            "vnp_IpAddr" => $vnp_IpAddr,
+            "vnp_Locale" => $vnp_Locale,
+            "vnp_OrderInfo" => $vnp_OrderInfo,
+            "vnp_OrderType" => $vnp_OrderType,
+            "vnp_ReturnUrl" => $vnp_Returnurl,
+            "vnp_TxnRef" => $vnp_TxnRef,
+        );
 
-        index index.html index.htm index.php;
-
-        charset utf-8;
-
-        location / {
-            try_files $uri $uri/ /index.php?$query_string;
+        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+            $inputData['vnp_BankCode'] = $vnp_BankCode;
+        }
+        ksort($inputData);
+        $query = "";
+        $i = 0;
+        $hashdata = "";
+        foreach ($inputData as $key => $value) {
+            if ($i == 1) {
+                $hashdata .= '&' . $key . "=" . $value;
+            } else {
+                $hashdata .= $key . "=" . $value;
+                $i = 1;
+            }
+            $query .= urlencode($key) . "=" . urlencode($value) . '&';
         }
 
-        location = /favicon.ico { access_log off; log_not_found off; }
-        location = /robots.txt  { access_log off; log_not_found off; }
-
-        error_page 404 /index.php;
-
-        location ~ \.php$ {
-            fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-            include fastcgi_params;
+        $vnp_Url = $vnp_Url . "?" . $query;
+        if (isset($vnp_HashSecret)) {
+            $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);
+            $vnp_Url .= 'vnp_SecureHashType=HMACSHA512&vnp_SecureHash=' . $vnpSecureHash;
         }
-
-        location ~ /\.(?!well-known).* {
-            deny all;
-        }
+        return redirect($vnp_Url);
     }
-                                                        </pre>
-
+</pre>
                                                     </div>
                                                 </div>
 
@@ -289,7 +343,9 @@ ssh -p 2018 root@61.14.233.25
                                     </div>
                                 </div>
                             </div>
-                            @livewire('inc.footer')
+
+
+                @livewire('inc.footer')
 
                         </div>
                     </div>

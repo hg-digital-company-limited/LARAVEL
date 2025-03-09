@@ -127,31 +127,13 @@
                     <div class="page-content">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="card ribbon-box">
-                                        <div class="card-body">
-                                            <div class="mb-5">
-                                                    <div class="ribbon ribbon-primary ribbon-shape ">VPS
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Lệnh SSH VPS</label>
-                                                    <div>
-                                                        <pre class="form-control">
-61.14.233.135
-D6ORhuMejt
-ssh -p 2018 root@61.14.233.135
-
-61.14.233.25
-6IJRZbC99z
-ssh -p 2018 root@61.14.233.25
-                                                        </pre>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                <div class="col-12">
+                                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                        <h4 class="mb-sm-0">THANH TOÁN VNPAY</h4>
+                                        <div class="page-title-right">
+                                            <ol class="breadcrumb m-0">
+                                                <li class="breadcrumb-item"><a href="/doc/cn2">TÀI LIỆU</a></li>
+                                            </ol>
                                         </div>
                                     </div>
                                 </div>
@@ -161,135 +143,22 @@ ssh -p 2018 root@61.14.233.25
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                    <div class="ribbon ribbon-primary ribbon-shape ">DEPLOY LARAVEL
+                                                <div class="ribbon ribbon-primary ribbon-shape ">THANH TOÁN VNPAY
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Mẫu file deploy.sh</label>
-                                                    <div>
-<pre class="form-control">
-    #!/bin/bash
-
-    # Đường dẫn thư mục dự án
-    PROJECT_DIR="/var/www/giangtran.com.vn"
-    GIT_REPO="https://github.com/hg-digital-company-limited/LARAVEL.git"
-    SQL_FILE="${PROJECT_DIR}/laravel.sql"
-    DB_NAME="laravel"
-    DB_USER="laravel"
-    DB_PASSWORD="laravel"  # Thay đổi mật khẩu nếu cần
-
-    # Xóa thư mục dự án
-    sudo rm -rf ${PROJECT_DIR}/*
-    sudo rm -rf ${PROJECT_DIR}/.[^.]*
-
-    # Clone lại repo
-    sudo git clone $GIT_REPO $PROJECT_DIR
-
-    # Xóa và tạo lại database
-    sudo mysql -e "\
-    DROP DATABASE IF EXISTS $DB_NAME;\
-    CREATE DATABASE $DB_NAME;\
-    CREATE USER IF NOT EXISTS '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASSWORD';\
-    GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'localhost';\
-    FLUSH PRIVILEGES;"
-
-    # Nhập dữ liệu từ file SQL
-    if [ -f "$SQL_FILE" ]; then
-        sudo mysql -u $DB_USER -p$DB_PASSWORD $DB_NAME < $SQL_FILE
-    else
-        echo "File SQL không tồn tại: $SQL_FILE"
-        exit 1
-    fi
-
-    # Cài đặt các gói Composer
-    cd $PROJECT_DIR
-    sudo composer install
-
-    # Sao chép tệp .env
-    if [ -f ".env.production" ]; then
-        sudo cp .env.production .env
-    else
-        echo "File .env.production không tồn tại."
-        exit 1
-    fi
-
-    # Phân quyền thư mục
-    sudo chown -R www-data.www-data $PROJECT_DIR/storage
-    sudo chown -R www-data.www-data $PROJECT_DIR/bootstrap/cache
-    # Tạo symbolic link cho storage
-    sudo php artisan storage:link
-
-    echo "Triển khai hoàn tất."
-
-</pre>
-
+                                                    <div> <label for="basiInput" class="form-label">VNPAY</label>
+                                                        <button class="btn btn-primary"
+                                                            wire:click="create">THANH TOÁN</button>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="card ribbon-box">
-                                        <div class="card-body">
-                                            <div class="mb-5">
-                                                    <div class="ribbon ribbon-primary ribbon-shape ">DEPLOY LARAVEL
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Mẫu file cấu hình nginx</label>
-                                                    <div>
-<pre class="form-control">
-    server {
-        listen 80;
-        server_name server_domain_or_IP;
-        root /var/www/travellist/public;
-
-        add_header X-Frame-Options "SAMEORIGIN";
-        add_header X-XSS-Protection "1; mode=block";
-        add_header X-Content-Type-Options "nosniff";
-
-        index index.html index.htm index.php;
-
-        charset utf-8;
-
-        location / {
-            try_files $uri $uri/ /index.php?$query_string;
-        }
-
-        location = /favicon.ico { access_log off; log_not_found off; }
-        location = /robots.txt  { access_log off; log_not_found off; }
-
-        error_page 404 /index.php;
-
-        location ~ \.php$ {
-            fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-            include fastcgi_params;
-        }
-
-        location ~ /\.(?!well-known).* {
-            deny all;
-        }
-    }
-                                                        </pre>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @livewire('inc.footer')
+                @livewire('inc.footer')
 
                         </div>
                     </div>

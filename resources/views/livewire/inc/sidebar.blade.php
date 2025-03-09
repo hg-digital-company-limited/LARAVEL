@@ -10,7 +10,7 @@
                 <li class="nav-item"> <a class="nav-link menu-link active"
                         href="/"> <i class="menu-icon"> <img width="100%"
                                 src="/template/assets/img/icon-house.png">
-                        </i> <span>Trang Chủ</span> </a> </li>
+                        </i> <span>VPS</span> </a> </li>
                 <li class="nav-item"> <a class="nav-link menu-link" href="#sidebarNapTien" data-bs-toggle="collapse"
                         role="button" aria-expanded="false" aria-controls="sidebarNapTien"> <i class="menu-icon"> <img
                                 width="100%" src="/template/assets/img/icon-payment.png"> </i>
@@ -19,6 +19,8 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item"> <a href="{{ route('cn1') }}"
                                     class="nav-link ">Ngân Hàng</a> </li>
+                                    <li class="nav-item"> <a href="{{ route('cn2') }}"
+                                        class="nav-link ">VNPAY</a> </li>
                         </ul>
                     </div>
                 </li>

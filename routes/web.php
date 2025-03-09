@@ -2,6 +2,8 @@
 
 use App\Livewire\Function\Cn1;
 use App\Livewire\Function\Cn1Doc;
+use App\Livewire\Function\Cn2;
+use App\Livewire\Function\Cn2Doc;
 use App\Livewire\Home;
 use App\Livewire\Login;
 use Illuminate\Support\Facades\Route;
@@ -10,11 +12,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::get('/', Home::class)->name('home');
     Route::get('/cn1', Cn1::class)->name('cn1');
+    Route::get('/cn2', Cn2::class)->name('cn2');
     Route::get('/doc/cn1', Cn1Doc::class)->name('doc.cn1');
+    Route::get('/doc/cn2', Cn2Doc::class)->name('doc.cn2');
+
+});
+Route::middleware('guest')->group(function () {
+    Route::get('/login', Login::class)->name('login');
+    Route::get('/cn1/pusher', function() {
+        event(new App\Events\CN1_MyEvent('Hello World'));
+    });
 });
 
-// Trang đăng nhập, chặn truy cập nếu đã đăng nhập
-Route::get('/login', Login::class)->name('login')->middleware('guest');
-Route::get('/pusher', function() {
-    event(new App\Events\CN1_MyEvent('Hello World'));
-});
