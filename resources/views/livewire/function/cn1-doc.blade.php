@@ -143,57 +143,131 @@
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG
+                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG TÀI
+                                                    LIỆU
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <div> <label for="basiInput" class="form-label">Mã QR</label>
-                                                        <div class="input-group mb-2">
-                                                            <img src="https://api.vietqr.io/mb/0966579217/0/HG%20X5VHSCSRI3/vietqr_net_2.jpg?accountName=TRAN+LE+HOANG+GIANG"
-                                                                style="max-width: 200px;" alt="">
-                                                        </div>
-                                                    </div>
+                                                    <label for="codeMirrorDemo" class="form-label">Lệnh SQL tạo bảng
+                                                        transactions</label>
                                                     <div>
-                                                        <h1>Danh sách giao dịch</h1>
+                                                        <pre  class="form-control">
+CREATE TABLE `transactions` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `bank_brand_name` VARCHAR(50) DEFAULT NULL,
+    `account_number` VARCHAR(20) DEFAULT NULL,
+    `transaction_date` DATETIME DEFAULT NULL,
+    `amount_out` DECIMAL(15,2) DEFAULT NULL,
+    `amount_in` DECIMAL(15,2) DEFAULT NULL,
+    `accumulated` DECIMAL(15,2) DEFAULT NULL,
+    `transaction_content` TEXT,
+    `reference_number` VARCHAR(50) DEFAULT NULL,
+    `code` VARCHAR(20) DEFAULT NULL,
+    `sub_account` VARCHAR(20) DEFAULT NULL,
+    `bank_account_id` VARCHAR(20) DEFAULT NULL,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+</pre>
 
-                                                        @if($transactions->isEmpty())
-                                                            <p>Không có giao dịch nào.</p>
-                                                        @else
-                                                            <div class="table-responsive p-0">
-                                                                <table id="datatable1"
-                                                                    class="table table-bordered table-striped table-hover">
-                                                                    <thead class="table-light">
-                                                                        <tr>
-                                                                            <th>ID</th>
-                                                                            <th>Tên Ngân Hàng</th>
-                                                                            <th>Số Tài Khoản</th>
-                                                                            <th>Ngày Giao Dịch</th>
-                                                                            <th>Số Tiền Ra</th>
-                                                                            <th>Số Tiền Vào</th>
-                                                                            <th>Nội Dung Giao Dịch</th>
-                                                                            <th>Số Tham Chiếu</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        @foreach($transactions as $transaction)
-                                                                            <tr>
-                                                                                <td>{{ $transaction->id }}</td>
-                                                                                <td>{{ $transaction->bank_brand_name }}</td>
-                                                                                <td>{{ $transaction->account_number }}</td>
-                                                                                <td>{{ $transaction->transaction_date }}</td>
-                                                                                <td>{{ $transaction->amount_out }}</td>
-                                                                                <td>{{ $transaction->amount_in }}</td>
-                                                                                <td>{{ $transaction->transaction_content }}</td>
-                                                                                <td>{{ $transaction->reference_number }}</td>
-                                                                            </tr>
-                                                                        @endforeach
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        @endif
                                                     </div>
                                                 </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card ribbon-box">
+                                        <div class="card-body">
+                                            <div class="mb-5">
+                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG TÀI
+                                                    LIỆU
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-3">
+                                                    <label for="codeMirrorDemo" class="form-label">Hàm thêm
+                                                        transactions</label>
+                                                    <div>
+                                                        <pre  class="form-control">
+public function fetchTransactionsFromApi()
+{
+    $url = 'https://my.sepay.vn/userapi/transactions/list';
+    $accountNumber = '0966579217';
+    $limit = 10;
+    $token = 'LS2IMDZ7SD0NHYOGA3PORUBITHMP5RNRSWDKU4XMEK15GVAPX6QABCJIDH0JYHXG';
+
+    // Khởi tạo cURL
+    $ch = curl_init();
+
+    // Thiết lập các tùy chọn cho cURL
+    curl_setopt($ch, CURLOPT_URL, $url . '?account_number=' . $accountNumber . '&limit=' . $limit);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'Authorization: Bearer ' . $token,
+    ]);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
+    // Thực hiện yêu cầu cURL
+    $response = curl_exec($ch);
+
+    // Kiểm tra lỗi cURL
+    if (curl_errno($ch)) {
+        return; // Xử lý lỗi nếu cần
+    }
+
+    // Đóng cURL
+    curl_close($ch);
+
+    // Giải mã phản hồi JSON
+    $data = json_decode($response, true);
+
+    // Kiểm tra nếu phản hồi thành công
+    if (isset($data['status']) && $data['status'] === 200 && $data['messages']['success']) {
+        $transactions = $data['transactions'] ?? [];
+
+        foreach ($transactions as $transaction) {
+            try {
+                // Kiểm tra xem giao dịch đã tồn tại chưa
+                if (!\App\Models\Transaction::where('reference_number', $transaction['reference_number'])->exists()) {
+                    // Tạo một giao dịch mới
+                    \App\Models\Transaction::create([
+                        'id' => $transaction['id'], // Giả định rằng API trả về id
+                        'bank_brand_name' => $transaction['bank_brand_name'], // Thay đổi key nếu cần
+                        'account_number' => $transaction['account_number'], // Thay đổi key nếu cần
+                        'transaction_date' => $transaction['transaction_date'], // Thay đổi key nếu cần
+                        'amount_out' => $transaction['amount_out'], // Thay đổi key nếu cần
+                        'amount_in' => $transaction['amount_in'], // Thay đổi key nếu cần
+                        'accumulated' => $transaction['accumulated'], // Thay đổi key nếu cần
+                        'transaction_content' => $transaction['transaction_content'], // Thay đổi key nếu cần
+                        'reference_number' => $transaction['reference_number'], // Thay đổi key nếu cần
+                        'code' => $transaction['code'] ?? null, // Thay đổi key nếu cần
+                        'sub_account' => $transaction['sub_account'] ?? null, // Thay đổi key nếu cần
+                        'bank_account_id' => $transaction['bank_account_id'], // Thay đổi key nếu cần
+                    ]);
+                } else {
+                    // Giao dịch đã tồn tại, có thể ghi log hoặc xử lý theo cách khác
+                    dd('Transaction already exists: ' . $transaction['id']);
+
+                }
+            } catch (\Exception $e) {
+                // Xử lý lỗi nếu cần
+                dd('Error saving transaction: ' . $e->getMessage());
+            }
+        }
+    }
+}
+</pre>
+
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>

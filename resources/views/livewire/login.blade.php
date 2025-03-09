@@ -142,27 +142,30 @@
                                         <p class="text-muted">Vui lòng đăng nhập để tiếp tục.</p>
                                     </div>
                                     <div class="p-2 mt-4">
-                                        <form action="">
-                                            <div class="mb-3"> <label for="username" class="form-label">Tên đăng
-                                                    nhập</label> <input type="text" class="form-control" id="username"
-                                                    value="" placeholder="Vui lòng nhập tên đăng nhập"> </div>
-                                            <div class="mb-3">
-                                                <div class="float-end"> <a href="#" class="text-muted">Quên mật khẩu?</a>
-                                                </div> <label class="form-label" for="password-input">Mật khẩu</label>
-                                                <div class="position-relative auth-pass-inputgroup mb-3"> <input
-                                                        type="password" class="form-control pe-5" value=""
-                                                        placeholder="Vui lòng nhập mật khẩu" id="password"> <button
-                                                        class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
-                                                        type="button" id="password-addon"><i
-                                                            class="ri-eye-fill align-middle"></i></button> </div>
-                                            </div>
-                                            <div class="form-check"> <input class="form-check-input" type="checkbox"
-                                                    value="" id="auth-remember-check"> <label class="form-check-label"
-                                                    for="auth-remember-check">Remember me</label> </div>
-                                            <div class="mt-4"> <button class="btn btn-success w-100" id="btnLogin"
-                                                    type="button">Đăng Nhập</button> </div>
-                                            <div class="mt-4 text-center"> </div>
-                                        </form>
+                                        <div>
+                                            @if (session()->has('error'))
+                                                <div class="alert alert-danger">
+                                                    {{ session('error') }}
+                                                </div>
+                                            @endif
+
+                                            <form wire:submit.prevent="login">
+                                                <div class="mb-3">
+                                                    <label for="name" class="form-label">Tên đăng nhập</label>
+                                                    <input type="text" class="form-control" id="name" wire:model="name" placeholder="Vui lòng nhập tên đăng nhập">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="password">Mật khẩu</label>
+                                                    <input type="password" class="form-control" id="password" wire:model="password" placeholder="Vui lòng nhập mật khẩu">
+                                                </div>
+
+                                                <div class="mt-4">
+                                                    <button class="btn btn-success w-100" type="submit">Đăng Nhập</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

@@ -17,7 +17,7 @@
                         <span>Nạp Tiền</span> </a>
                     <div class="collapse menu-dropdown " id="sidebarNapTien">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item"> <a href="route('cn1')"
+                            <li class="nav-item"> <a href="{{ route('cn1') }}"
                                     class="nav-link ">Ngân Hàng</a> </li>
                         </ul>
                     </div>
