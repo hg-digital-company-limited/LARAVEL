@@ -150,7 +150,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <form id="form" wire:submit.prevent="create">
+                                                    <div id="form" >
                                                         <div><label for="password">Mật khẩu</label> <input class="inp"
                                                                 id="password" type="password" wire:model="password">
                                                         </div>
@@ -160,8 +160,8 @@
                                                             </div>
                                                         </div>
                                                         <br>
-                                                        <button type="submit" class="btn btn-primary">Gửi</button>
-                                                    </form>
+                                                        <button wire:click="create" class="btn btn-primary">Gửi</button>
+                                                    </div>
                                                     <script>
                                                         var captchaId = "e69dae1839c6c93fdf2843d13a3eae5e"
                                                         var product = "popup"
@@ -177,12 +177,7 @@
                                                             gt
                                                                 .appendTo("#captcha")
                                                                 .onSuccess(function (e) {
-                                                                    console.log('Geetest response:', e); // Kiểm tra dữ liệu trả về
-                                                                    if (e && e.uri) {
                                                                         Livewire.dispatch('addToCart');
-                                                                    } else {
-                                                                        console.error('Unexpected response:', e);
-                                                                    }
                                                                 });
 
                                                             $('#btn').click(function () {
