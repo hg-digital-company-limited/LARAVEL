@@ -143,13 +143,11 @@
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">VNPAY TÀI
-                                                    LIỆU
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Tài khoản test
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Tài khoản test</label>
                                                     <div>
 <pre class="form-control">
     #	Thông tin thẻ	Ghi chú
@@ -272,14 +270,12 @@
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">VNPAY TÀI
-                                                    LIỆU
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Lệnh tạo thanh toán
+                                                    VNPAY
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Lệnh tạo thanh toán
-                                                        VNPAY</label>
                                                     <div>
 <pre class="form-control">
     public function create()
