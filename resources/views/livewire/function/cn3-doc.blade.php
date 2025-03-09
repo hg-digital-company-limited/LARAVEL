@@ -26,6 +26,9 @@
                 href="/template/public/AdminLTE3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
             <link rel="stylesheet"
                 href="/template/public/AdminLTE3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/javascript/javascript.min.js"></script>
         </head>
         <style>
             html,
@@ -286,6 +289,30 @@
                                                     <div>
 <pre class="form-control">
 
+    &lt;script src="https://static.geetest.com/v4/gt4.js"&gt;&lt;/script&gt;
+    &lt;div&gt;&lt;label for="btn"&gt;Capcha { { $capcha } }&lt;/label&gt;
+        &lt;div id="captcha"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        var captchaId = "e69dae1839c6c93fdf2843d13a3eae5e";
+        var product = "popup";
+        initGeetest4({
+            captchaId: captchaId,
+            product: product,
+        }, function (gt) {
+            window.gt = gt;
+            gt.appendTo("#captcha").onSuccess(function (e) {
+                Livewire.dispatch('CapchaUpdate');
+            });
+
+            $('#btn').click(function () {
+                gt.showBox();
+            });
+            $('#reset_btn').click(function () {
+                gt.reset();
+            });
+        });
+    &lt;/script&gt;
 
 </pre>
                                                     </div>

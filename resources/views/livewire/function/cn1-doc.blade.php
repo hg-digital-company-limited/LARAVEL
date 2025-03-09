@@ -126,6 +126,7 @@
                 <div class="main-content">
                     <div class="page-content">
                         <div class="container-fluid">
+
                             <div class="row">
                                 <div class="col-12">
                                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -134,6 +135,29 @@
                                             <ol class="breadcrumb m-0">
                                                 <li class="breadcrumb-item"><a href="/doc/cn1">TÀI LIỆU</a></li>
                                             </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card ribbon-box">
+                                        <div class="card-body">
+                                            <div class="mb-5">
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Lệnh tải thư viện
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-3">
+                                                    <div>
+<pre class="form-control">
+composer require pusher/pusher-php-server
+</pre>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
