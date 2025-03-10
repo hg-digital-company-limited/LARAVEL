@@ -117,6 +117,9 @@
                 margin-right: 10px;
                 color: #6d8bb0;
             }
+            object {
+    width: 100%;
+}
         </style>
 
         <body>
@@ -152,45 +155,9 @@
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-<pre class="form-control">
-    &lt;?php
-
-    namespace App\Livewire\Function;
-
-    use Livewire\Component;
-    use Illuminate\Support\Facades\Cookie;
-
-    class Cn3 extends Component
-    {
-        public $password;
-        public $capcha;
-
-
-        public function mount()
-        {
-            $this->capcha = Cookie::get('capcha') ?? 0;
-            Cookie::queue(Cookie::forget('capcha'));
-        }
-
-        public function create()
-        {
-            $this->capcha = Cookie::get('capcha') ?? 0;
-            if ($this->capcha) {
-                dd('Xác thực thành công', $this->password);
-            } else {
-                dd('Xác thực thất bại', $this->password);
-            }
-        }
-
-
-
-        public function render()
-        {
-            return view('livewire.function.cn3');
-        }
-    }
-
-</pre>
+                                                        <object type="image/svg+xml" data="/svg/ray-so-export (3).svg">
+                                                            Your browser does not support SVG
+                                                        </object>
                                                     </div>
                                                 </div>
 
@@ -210,17 +177,10 @@
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-<pre class="form-control">
-    &lt;div id="form"&gt;
-        &lt;div&gt;&lt;label for="password"&gt;Mật khẩu&lt;/label&gt;
-        &lt;input class="inp" id="password" type="password" wire:model="password"&gt;
-        &lt;/div&gt;
-        &lt;br&gt;
-        @ livewire('function.cn3.capcha')
-        &lt;br&gt;
-        &lt;button wire:click="create" class="btn btn-primary"&gt;Gửi&lt;/button&gt;
-    &lt;/div&gt;
-</pre>
+                                                        <object type="image/svg+xml" data="/svg/ray-so-export (4).svg">
+                                                            Your browser does not support SVG
+                                                        </object>
+
                                                     </div>
                                                 </div>
 
