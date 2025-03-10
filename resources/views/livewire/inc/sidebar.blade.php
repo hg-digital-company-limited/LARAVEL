@@ -32,6 +32,10 @@
                     href="{{ route('cn4') }}"> <i class="menu-icon"> <img width="100%"
                             src="/template/assets/img/icon-house.png">
                     </i> <span>Gợi Ý Địa Chỉ</span> </a> </li>
+                <li class="nav-item"> <a class="nav-link menu-link active"
+                    href="{{ route('cn5') }}"> <i class="menu-icon"> <img width="100%"
+                            src="/template/assets/img/icon-house.png">
+                    </i> <span>Phân quyền Filament</span> </a> </li>
             </ul>
         </div> <!-- Sidebar -->
     </div>
