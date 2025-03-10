@@ -119,6 +119,7 @@
             }
             object {
     width: 100%;
+    max-width: 500px;
 }
         </style>
 
@@ -200,34 +201,9 @@
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-<pre class="form-control">
-    &lt;?php
-
-    namespace App\Livewire\Function\Cn3;
-
-    use Illuminate\Support\Facades\Cookie;
-
-    use Livewire\Component;
-
-    class Capcha extends Component
-    {
-        protected $listeners = ['CapchaUpdate'];
-        public $capcha;
-        public function mount()
-        {
-            $this->capcha = Cookie::get('capcha') ?? 0;
-        }
-        public function CapchaUpdate()
-        {
-            Cookie::queue('capcha', true, 5);
-        }
-        public function render()
-        {
-            return view('livewire.function.cn3.capcha');
-        }
-    }
-
-</pre>
+                                                        <object type="image/svg+xml" data="/svg/ray-so-export.svg">
+                                                            Your browser does not support SVG
+                                                        </object>
                                                     </div>
                                                 </div>
 
@@ -247,34 +223,9 @@
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-<pre class="form-control">
-
-    &lt;script src="https://static.geetest.com/v4/gt4.js"&gt;&lt;/script&gt;
-    &lt;div&gt;&lt;label for="btn"&gt;Capcha { { $capcha } }&lt;/label&gt;
-        &lt;div id="captcha"&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;script&gt;
-        var captchaId = "e69dae1839c6c93fdf2843d13a3eae5e";
-        var product = "popup";
-        initGeetest4({
-            captchaId: captchaId,
-            product: product,
-        }, function (gt) {
-            window.gt = gt;
-            gt.appendTo("#captcha").onSuccess(function (e) {
-                Livewire.dispatch('CapchaUpdate');
-            });
-
-            $('#btn').click(function () {
-                gt.showBox();
-            });
-            $('#reset_btn').click(function () {
-                gt.reset();
-            });
-        });
-    &lt;/script&gt;
-
-</pre>
+                                                        <object type="image/svg+xml" data="/svg/laravel.svg">
+                                                            Your browser does not support SVG
+                                                        </object>
                                                     </div>
                                                 </div>
 

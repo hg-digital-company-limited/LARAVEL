@@ -114,6 +114,11 @@
                 margin-right: 10px;
                 color: #6d8bb0;
             }
+            object {
+    width: 100%;
+    max-width: 500px;
+}
+
         </style>
 
         <body>
@@ -150,9 +155,9 @@
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-<pre class="form-control">
-composer require pusher/pusher-php-server
-</pre>
+                                                        <object type="image/svg+xml" data="/svg/laravel (1).svg">
+                                                            Your browser does not support SVG
+                                                        </object>
 
                                                     </div>
                                                 </div>
@@ -173,25 +178,9 @@ composer require pusher/pusher-php-server
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-                                                        <pre  class="form-control">
-CREATE TABLE `transactions` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `bank_brand_name` VARCHAR(50) DEFAULT NULL,
-    `account_number` VARCHAR(20) DEFAULT NULL,
-    `transaction_date` DATETIME DEFAULT NULL,
-    `amount_out` DECIMAL(15,2) DEFAULT NULL,
-    `amount_in` DECIMAL(15,2) DEFAULT NULL,
-    `accumulated` DECIMAL(15,2) DEFAULT NULL,
-    `transaction_content` TEXT,
-    `reference_number` VARCHAR(50) DEFAULT NULL,
-    `code` VARCHAR(20) DEFAULT NULL,
-    `sub_account` VARCHAR(20) DEFAULT NULL,
-    `bank_account_id` VARCHAR(20) DEFAULT NULL,
-    `created_at` TIMESTAMP NULL DEFAULT NULL,
-    `updated_at` TIMESTAMP NULL DEFAULT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-</pre>
+                                                        <object type="image/svg+xml" data="/svg/laravel (2).svg">
+                                                            Your browser does not support SVG
+                                                        </object>
 
                                                     </div>
                                                 </div>
@@ -212,78 +201,10 @@ CREATE TABLE `transactions` (
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                        <pre  class="form-control">
-public function fetchTransactionsFromApi()
-{
-    $url = 'https://my.sepay.vn/userapi/transactions/list';
-    $accountNumber = '0966579217';
-    $limit = 10;
-    $token = 'LS2IMDZ7SD0NHYOGA3PORUBITHMP5RNRSWDKU4XMEK15GVAPX6QABCJIDH0JYHXG';
+                                                    <object type="image/svg+xml" data="/svg/laravel (3).svg">
+                                                        Your browser does not support SVG
+                                                    </object>
 
-    // Khởi tạo cURL
-    $ch = curl_init();
-
-    // Thiết lập các tùy chọn cho cURL
-    curl_setopt($ch, CURLOPT_URL, $url . '?account_number=' . $accountNumber . '&limit=' . $limit);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-        'Authorization: Bearer ' . $token,
-    ]);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-
-    // Thực hiện yêu cầu cURL
-    $response = curl_exec($ch);
-
-    // Kiểm tra lỗi cURL
-    if (curl_errno($ch)) {
-        return; // Xử lý lỗi nếu cần
-    }
-
-    // Đóng cURL
-    curl_close($ch);
-
-    // Giải mã phản hồi JSON
-    $data = json_decode($response, true);
-
-    // Kiểm tra nếu phản hồi thành công
-    if (isset($data['status']) && $data['status'] === 200 && $data['messages']['success']) {
-        $transactions = $data['transactions'] ?? [];
-
-        foreach ($transactions as $transaction) {
-            try {
-                // Kiểm tra xem giao dịch đã tồn tại chưa
-                if (!\App\Models\Transaction::where('reference_number', $transaction['reference_number'])->exists()) {
-                    // Tạo một giao dịch mới
-                    \App\Models\Transaction::create([
-                        'id' => $transaction['id'], // Giả định rằng API trả về id
-                        'bank_brand_name' => $transaction['bank_brand_name'], // Thay đổi key nếu cần
-                        'account_number' => $transaction['account_number'], // Thay đổi key nếu cần
-                        'transaction_date' => $transaction['transaction_date'], // Thay đổi key nếu cần
-                        'amount_out' => $transaction['amount_out'], // Thay đổi key nếu cần
-                        'amount_in' => $transaction['amount_in'], // Thay đổi key nếu cần
-                        'accumulated' => $transaction['accumulated'], // Thay đổi key nếu cần
-                        'transaction_content' => $transaction['transaction_content'], // Thay đổi key nếu cần
-                        'reference_number' => $transaction['reference_number'], // Thay đổi key nếu cần
-                        'code' => $transaction['code'] ?? null, // Thay đổi key nếu cần
-                        'sub_account' => $transaction['sub_account'] ?? null, // Thay đổi key nếu cần
-                        'bank_account_id' => $transaction['bank_account_id'], // Thay đổi key nếu cần
-                    ]);
-                } else {
-                    // Giao dịch đã tồn tại, có thể ghi log hoặc xử lý theo cách khác
-                    dd('Transaction already exists: ' . $transaction['id']);
-
-                }
-            } catch (\Exception $e) {
-                // Xử lý lỗi nếu cần
-                dd('Error saving transaction: ' . $e->getMessage());
-            }
-        }
-    }
-}
-</pre>
-
-                                                    </div>
                                                 </div>
 
                                             </div>
@@ -296,114 +217,16 @@ public function fetchTransactionsFromApi()
                                     <div class="card ribbon-box">
                                         <div class="card-body">
                                             <div class="mb-5">
-                                                <div class="ribbon ribbon-primary ribbon-shape ">NẠP TIỀN NGÂN HÀNG TÀI
-                                                    LIỆU
+                                                <div class="ribbon ribbon-primary ribbon-shape ">Tạo command
+                                                    transactions
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
-                                                    <label for="codeMirrorDemo" class="form-label">Tạo command
-                                                        transactions</label>
                                                     <div>
-                                                        <pre  class="form-control">
-
-namespace App\Console\Commands;
-
-use Illuminate\Console\Command;
-use App\Models\User; // Import mô hình User
-
-class Transactions extends Command
-{
-    protected $signature = 'app:transactions';
-    protected $description = 'Command to log hello world every 5 seconds and update user balance';
-
-    public function handle()
-    {
-        $userId = 2; // Thay đổi ID người dùng nếu cần
-        $user = User::find($userId); // Lấy người dùng
-
-        if (!$user) {
-            $this->error('User not found!');
-            return;
-        }
-
-        while (true) {
-            $this->info('Hello world!');
-            $this->fetchTransactionsFromApi();
-            sleep(5); // Ngủ 5 giây
-        }
-    }
-    public function fetchTransactionsFromApi()
-    {
-        $url = 'https://my.sepay.vn/userapi/transactions/list';
-        $accountNumber = '0966579217';
-        $limit = 10;
-        $token = 'LS2IMDZ7SD0NHYOGA3PORUBITHMP5RNRSWDKU4XMEK15GVAPX6QABCJIDH0JYHXG';
-
-        // Khởi tạo cURL
-        $ch = curl_init();
-
-        // Thiết lập các tùy chọn cho cURL
-        curl_setopt($ch, CURLOPT_URL, $url . '?account_number=' . $accountNumber . '&limit=' . $limit);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json',
-            'Authorization: Bearer ' . $token,
-        ]);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-
-        // Thực hiện yêu cầu cURL
-        $response = curl_exec($ch);
-
-        // Kiểm tra lỗi cURL
-        if (curl_errno($ch)) {
-            return; // Xử lý lỗi nếu cần
-        }
-
-        // Đóng cURL
-        curl_close($ch);
-
-        // Giải mã phản hồi JSON
-        $data = json_decode($response, true);
-
-        // Kiểm tra nếu phản hồi thành công
-        if (isset($data['status']) && $data['status'] === 200 && $data['messages']['success']) {
-            $transactions = $data['transactions'] ?? [];
-
-            foreach ($transactions as $transaction) {
-                try {
-                    // Kiểm tra xem giao dịch đã tồn tại chưa
-                    if (!\App\Models\Transaction::where('reference_number', $transaction['reference_number'])->exists()) {
-                        // Tạo một giao dịch mới
-                        \App\Models\Transaction::create([
-                            'id' => $transaction['id'], // Giả định rằng API trả về id
-                            'bank_brand_name' => $transaction['bank_brand_name'], // Thay đổi key nếu cần
-                            'account_number' => $transaction['account_number'], // Thay đổi key nếu cần
-                            'transaction_date' => $transaction['transaction_date'], // Thay đổi key nếu cần
-                            'amount_out' => $transaction['amount_out'], // Thay đổi key nếu cần
-                            'amount_in' => $transaction['amount_in'], // Thay đổi key nếu cần
-                            'accumulated' => $transaction['accumulated'], // Thay đổi key nếu cần
-                            'transaction_content' => $transaction['transaction_content'], // Thay đổi key nếu cần
-                            'reference_number' => $transaction['reference_number'], // Thay đổi key nếu cần
-                            'code' => $transaction['code'] ?? null, // Thay đổi key nếu cần
-                            'sub_account' => $transaction['sub_account'] ?? null, // Thay đổi key nếu cần
-                            'bank_account_id' => $transaction['bank_account_id'], // Thay đổi key nếu cần
-                        ]);
-                    } else {
-                        // Giao dịch đã tồn tại, có thể ghi log hoặc xử lý theo cách khác
-                        // dd('Transaction already exists: ' . $transaction['id']);
-
-                    }
-                } catch (\Exception $e) {
-                    // Xử lý lỗi nếu cần
-                    // dd('Error saving transaction: ' . $e->getMessage());
-                }
-            }
-        }
-    }
-}
-
-</pre>
+                                                        <object type="image/svg+xml" data="/svg/laravel (4).svg">
+                                                            Your browser does not support SVG
+                                                        </object>
 
                                                     </div>
                                                 </div>
@@ -424,14 +247,9 @@ class Transactions extends Command
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-                                                        <pre  class="form-control">
-BROADCAST_CONNECTION=pusher
-BROADCAST_DRIVER=pusher
-PUSHER_APP_ID=1954604
-PUSHER_APP_KEY=ef34e040856c80f99af3
-PUSHER_APP_SECRET=65c43fa0d14ea04fec0a
-PUSHER_APP_CLUSTER=ap1
-</pre>
+                                                        <object type="image/svg+xml" data="/svg/laravel (5).svg">
+                                                            Your browser does not support SVG
+                                                        </object>
 
                                                     </div>
                                                 </div>
@@ -453,22 +271,9 @@ PUSHER_APP_CLUSTER=ap1
                                                 <div class="col-lg-12 mb-3">
 
                                                     <div>
-                                                        <pre class="form-control">
-   &lt;script src="https://js.pusher.com/8.2.0/pusher.min.js"&gt;&lt;/script&gt;
-   &lt;script&gt;
-     // Enable Pusher logging - don't include this in production
-     Pusher.logToConsole = true;
-     var pusher = new Pusher('ef34e040856c80f99af3', {
-       cluster: 'ap1',
-       encrypted: true
-     });
-     var channel = pusher.subscribe('my-channel');
-     channel.bind('my-event', function(data) {
-       alert(JSON.stringify(data));
-     });
-   &lt;/script&gt;
-                                                            </pre>
-
+                                                        <object type="image/svg+xml" data="/svg/laravel (6).svg">
+                                                            Your browser does not support SVG
+                                                        </object>
                                                     </div>
                                                 </div>
 
@@ -488,47 +293,9 @@ PUSHER_APP_CLUSTER=ap1
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-                                                        <pre class="form-control">
-&lt;?php
-namespace App\Events;
-
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
-use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Queue\SerializesModels;
-
-class CN1_MyEvent implements ShouldBroadcastNow
-{
-  use Dispatchable, InteractsWithSockets, SerializesModels;
-
-  public $message;
-
-  public function __construct($message)
-  {
-    $this->message = ['message' => '123123123'];
-  }
-
-  public function broadcastOn()
-  {
-      return ['my-channel'];
-  }
-
-  public function broadcastAs()
-  {
-      return 'my-event';
-  }
-  public function broadcastWith(): array
-  {
-      return  $this->message;
-  }
-}
-
-                                                            </pre>
-
+                                                        <object type="image/svg+xml" data="/svg/laravel (7).svg">
+                                                            Your browser does not support SVG
+                                                        </object>
                                                     </div>
                                                 </div>
 
@@ -548,9 +315,9 @@ class CN1_MyEvent implements ShouldBroadcastNow
                                             <div class="row">
                                                 <div class="col-lg-12 mb-3">
                                                     <div>
-<pre class="form-control">
-php artisan app:transactions
-                                                            </pre>
+                                                        <object type="image/svg+xml" data="/svg/laravel (9).svg">
+                                                            Your browser does not support SVG
+                                                        </object>
 
                                                     </div>
                                                 </div>
